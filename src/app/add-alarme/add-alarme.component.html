@@ -5,6 +5,10 @@
 
 <div *ngIf="!sucesso">
   <div class="label">
+    Medicamento*: <br />
+    <input type="text" [(ngModel)]="medicamento" />
+  </div>
+  <div class="label">
     Data*: <br />
     <input type="date" [(ngModel)]="data" />
   </div>

@@ -22,7 +22,7 @@ export class AddConsultasComponent implements OnInit {
     if (this.data === '' || this.hora === '' || this.nome ==='') {
       return alert('Preencha todos os campos!');
     }
-    alert("este alarme irá ser agendado")
+    alert("esta consulta irá ser agendada")
   }
 
 }

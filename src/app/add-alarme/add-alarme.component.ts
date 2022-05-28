@@ -17,7 +17,7 @@ export class AddAlarmeComponent implements OnInit {
   ngOnInit() {}
 
   adicionar() {
-    if (this.data === '' || this.time === '') {
+    if (this.data === '' || this.time === '' || this.medicamento === '') {
       return alert('Preencha todos os campos!');
     }
     alert("este alarme irá ser agendado")
