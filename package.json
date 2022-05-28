@@ -20,7 +20,11 @@
     "@angular/router": "~13.1.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "angular-bootstrap-datetimepicker": "4.0.2",
+    "bootstrap": "^5.1.3",
+    "moment": "2.29.3",
+    "open-iconic": "1.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.2",

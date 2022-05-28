@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./agenda.component.css'],
 })
 export class AgendaComponent {
-  data: any = null;
+  data = null;
+  minuteStep = 5;
+  selectedDate: Date;
+
   constructor() {}
 
   selecionar_dia() {

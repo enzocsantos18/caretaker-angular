@@ -134,3 +134,39 @@ body {
     outline: none;
   }
   
+  
+/* calendario, cuidado se mexer aqui */
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  border-radius: 10px;
+}
+
+.row:first-of-type button {
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.row:first-of-type button:hover {
+  background-color: #cfbfff90;
+}
+
+.row:first-of-type button:first-of-type::after {
+  content: 'chevron_left';
+  font-size: 30px;
+  font-family: 'Material Icons';
+}
+
+.row:first-of-type button:last-of-type::after {
+  content: 'chevron_right';
+  font-size: 30px;
+  font-family: 'Material Icons';
+}
+
+.dl-abdtp-now {
+  border-radius: 2px !important;
+}
