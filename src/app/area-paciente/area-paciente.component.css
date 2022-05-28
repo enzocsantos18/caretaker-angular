@@ -1,6 +1,10 @@
-a {
+.select-icon:hover {
   text-decoration: none;
-  border: 2px solid yellow;
+  border: 2px solid rgb(148, 81, 148);
+  cursor: pointer;
+}
+p{
+  color: #7a51af;
 }
 
 .logout {
