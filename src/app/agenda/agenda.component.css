@@ -1,0 +1,21 @@
+table,
+th,
+td {
+  border: solid 1px purple;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: purple;
+  color: white;
+}
+
+td {
+  cursor: pointer;
+}
+
+td:hover {
+  color: purple;
+  background-color: white;
+}

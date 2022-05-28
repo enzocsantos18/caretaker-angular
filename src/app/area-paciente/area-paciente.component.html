@@ -1,0 +1,61 @@
+<div class="main-page-container">
+  <h1>
+    Bem-vinde, <b>{{ user_name }}</b
+    >!
+  </h1>
+  <a [routerLink]="['/']">
+    <span class="logout material-icons">power_settings_new</span></a
+  >
+  <div class="grid">
+    <div class="grid-row">
+      <div class="item-wrapper">
+        <a [routerLink]="['/medicamento']">
+          <div class="select-icon">
+            <span class="material-icons">medical_services</span>
+          </div>
+        </a>
+        <p class="select-text">adicionar medicamentos</p>
+      </div>
+      <div class="item-wrapper">
+        <div class="select-icon" (click)="click_icon('consultas')">
+          <span class="material-icons">pending_actions</span>
+        </div>
+        <p class="select-text">adicionar consultas</p>
+      </div>
+
+      <div class="item-wrapper">
+        <div class="select-icon" (click)="click_icon('exames')">
+          <span class="material-icons">monitor_heart</span>
+        </div>
+        <p class="select-text">adicionar exames</p>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="item-wrapper">
+        <div class="select-icon" (click)="click_icon('histórico de vacinação')">
+          <span class="material-icons">vaccines</span>
+        </div>
+        <p class="select-text">histórico de vacinação</p>
+      </div>
+
+      <div class="item-wrapper">
+        <div class="select-icon" (click)="click_icon('adicionar alarme')">
+          <span class="material-icons">alarm</span>
+        </div>
+        <p class="select-text">adicionar alarme</p>
+      </div>
+
+      <div class="item-wrapper">
+        <a [routerLink]="['/agenda']">
+          <div class="select-icon">
+            <span class="material-icons">calendar_month</span>
+          </div>
+        </a>
+        <a [routerLink]="['/agenda']">
+          <p class="select-text">agenda</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

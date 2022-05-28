@@ -1,18 +1,37 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { InfoService } from 'src/app/info.service';
+import { AddMedicComponent } from './add-medic/add-medic.component';
+import { AgendaComponent } from './agenda/agenda.component';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AreaPacienteComponent } from './area-paciente/area-paciente.component';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'app', component: AppComponent },
+      { path: '', component: IntroComponent },
+      { path: 'main', component: AreaPacienteComponent },
+      { path: 'medicamento', component: AddMedicComponent },
+      { path: 'agenda', component: AgendaComponent },
+    ]),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    AreaPacienteComponent,
+    AddMedicComponent,
+    AgendaComponent,
+    IntroComponent,
+  ],
+  bootstrap: [AppComponent],
+  providers: [InfoService],
 })
 export class AppModule { }

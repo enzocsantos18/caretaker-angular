@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+  border: 2px solid yellow;
+}
+
+.logout {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  text-shadow: none;
+  color: brown;
+  font-weight: bold;
+  font-size: 20px;
+}
