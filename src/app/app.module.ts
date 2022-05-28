@@ -10,6 +10,8 @@ import { AgendaComponent } from './agenda/agenda.component';
 import { AppComponent } from './app.component';
 import { AreaPacienteComponent } from './area-paciente/area-paciente.component';
 import { IntroComponent } from './intro/intro.component';
+import { AddAlarmeComponent } from './add-alarme/add-alarme.component';
+import { AddConsultasComponent } from './add-consultas/add-consultas.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { IntroComponent } from './intro/intro.component';
       { path: 'main', component: AreaPacienteComponent },
       { path: 'medicamento', component: AddMedicComponent },
       { path: 'agenda', component: AgendaComponent },
+      { path: 'consulta', component: AddConsultasComponent},
+      { path: 'alarme', component:AddAlarmeComponent},
     ]),
   ],
   declarations: [
@@ -30,6 +34,8 @@ import { IntroComponent } from './intro/intro.component';
     AddMedicComponent,
     AgendaComponent,
     IntroComponent,
+    AddAlarmeComponent,
+    AddConsultasComponent,
   ],
   bootstrap: [AppComponent],
   providers: [InfoService],
