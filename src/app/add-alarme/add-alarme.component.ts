@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoService } from '../info.service';
 
 @Component({
   selector: 'app-add-alarme',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-alarme.component.css']
 })
 export class AddAlarmeComponent implements OnInit {
+  sucesso = false;
+  medicamento: string ='';
+  data: string ='';
+  time: string ='';
 
-  constructor() { }
+  constructor(public info: InfoService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {}
+
+  adicionar() {
+    if (this.data === '' || this.time === '') {
+      return alert('Preencha todos os campos!');
+    }
+    alert("este alarme irá ser agendado")
   }
 
+  
 }

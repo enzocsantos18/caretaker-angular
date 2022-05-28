@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoService } from '../info.service';
 
 @Component({
   selector: 'app-add-consultas',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-consultas.component.css']
 })
 export class AddConsultasComponent implements OnInit {
+  sucesso = false;
+  nome: string ='';
+  descricao: string = '';
+  data: string ='';
+  hora: string ='';
+  tratamento: string='';
 
-  constructor() { }
+  constructor(public info: InfoService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {}
+
+  adicionar() {
+    if (this.data === '' || this.hora === '' || this.nome ==='') {
+      return alert('Preencha todos os campos!');
+    }
+    alert("este alarme irá ser agendado")
   }
 
 }

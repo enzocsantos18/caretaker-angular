@@ -13,14 +13,16 @@
           <div class="select-icon">
             <span class="material-icons">medical_services</span>
           </div>
-        </a>
         <p class="select-text">adicionar medicamentos</p>
+      </a>
       </div>
       <div class="item-wrapper">
-        <div class="select-icon" (click)="click_icon('consultas')">
+        <a [routerLink]="['/consulta']">
+        <div class="select-icon">
           <span class="material-icons">pending_actions</span>
         </div>
         <p class="select-text">adicionar consultas</p>
+        </a>
       </div>
 
       <!-- <div class="item-wrapper">
@@ -40,10 +42,12 @@
       </div> -->
 
       <div class="item-wrapper">
-        <div class="select-icon" (click)="click_icon('adicionar alarme')">
+        <a [routerLink]="['/alarme']">
+        <div class="select-icon">
           <span class="material-icons">alarm</span>
         </div>
         <p class="select-text">adicionar alarme</p>
+      </a>
       </div>
 
       <div class="item-wrapper">
@@ -51,8 +55,6 @@
           <div class="select-icon">
             <span class="material-icons">calendar_month</span>
           </div>
-        </a>
-        <a [routerLink]="['/agenda']">
           <p class="select-text">agenda</p>
         </a>
       </div>
