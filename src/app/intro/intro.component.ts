@@ -26,7 +26,16 @@ export class IntroComponent {
   }
   entrar() {
     // usuário clica 'entrar'
-    this.escolha = 'logar';
+    // this.escolha = 'logar';
+
+    if (this.username === '' || this.senha === '') {
+      return alert('Preencha todos os campos!');
+    }
+
+
+    this.info.mudar_nome_usuario(this.username);
+    this.router.navigate(['/', 'main']);
+
   }
   resetar() {
     // usuário retorna para pagina inicial

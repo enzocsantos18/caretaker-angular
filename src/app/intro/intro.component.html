@@ -1,9 +1,9 @@
 <div *ngIf="!escolha">
   <label for="User">Login</label>
-  <input type="text" id="User" name="Name" />
+  <input type="text" id="User" name="Name" [(ngModel)]="username"/>
   <br /><br />
   <label for="Senha">Senha</label>
-  <input type="text" id="Senha" name="Senha" />
+  <input type="text" id="Senha" name="Senha" [(ngModel)]="senha"/>
   <br /><br />
   <div class="button" (click)="entrar()">ENTRAR</div>
   <br />
