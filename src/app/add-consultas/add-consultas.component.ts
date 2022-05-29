@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { InfoService } from '../info.service';
+import api from '../configs/api';
+import { ConsultaRequest } from '../models/consulta';
 
 @Component({
   selector: 'app-add-consultas',
@@ -14,7 +16,7 @@ export class AddConsultasComponent implements OnInit {
   hora: string ='';
   tratamento: string='';
 
-  constructor(public info: InfoService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
@@ -22,7 +24,24 @@ export class AddConsultasComponent implements OnInit {
     if (this.data === '' || this.hora === '' || this.nome ==='') {
       return alert('Preencha todos os campos!');
     }
-    alert("esta consulta irá ser agendada")
+
+    const consulta : ConsultaRequest = {
+      nome: this.nome,
+      data: this.data,
+      descricao: this.descricao,
+      hora: this.hora,
+      id_usuario: 1
+    }
+  
+    this.http.post(api + "consulta", consulta).subscribe((data) => {
+      return alert("Consulta agendada com sucesso")
+
+    }, err => {
+      console.log(err)
+      return alert('Erro ao agendar consulta')
+    })
+
+    
   }
 
 }

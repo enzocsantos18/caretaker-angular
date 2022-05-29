@@ -45,8 +45,7 @@ export class AddMedicComponent implements OnInit {
     this.http.post(api + "medicamentos", medicamento).subscribe((data) => {
       this.sucesso = true;
     }, err => {
-      console.log(err)
-      alert('Erro ao cadastrar medicamento')
+      return alert('Erro ao cadastrar medicamento')
     })
 
   }

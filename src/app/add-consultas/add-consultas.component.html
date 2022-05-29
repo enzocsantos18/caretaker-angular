@@ -22,7 +22,7 @@
 
   <div class="label">
     Hora*: <br />
-    <input type="time" [(ngModel)]="hora" />
+    <input type="time" step="2" [(ngModel)]="hora" />
   </div>
   <br />
 
@@ -30,11 +30,11 @@
   <br />
 </div>
 
-<div *ngIf="sucesso">
+<!-- <div *ngIf="sucesso">
   <h2>Sucesso!</h2>
   O medicamento foi adicionado com sucesso! :)<br /><br />
   <div *ngFor="let infos of info.get_lista_medicamentos(); index as i">
     <p>{{ infos.medicamento }}</p>
     <p>{{ infos.dosagem }}</p>
   </div>
-</div>
+</div> -->
