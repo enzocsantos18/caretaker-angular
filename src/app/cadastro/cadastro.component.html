@@ -1,0 +1,43 @@
+<div *ngIf="!tipo">
+    <h2>Cadastre-se</h2>
+    <div class="subtitle">
+        Por favor, efetue o seu cadastro para acessar todas as nossas
+        funcionalidades
+    </div>
+    <br />
+    <div class="button" (click)="tipo_usuario('paciente')">SOU PACIENTE</div>
+    <br />
+    <div class="button" (click)="tipo_usuario('cuidador')">SOU CUIDADOR</div>
+    <br />
+    <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="small-text">Já tenho um conta, voltar para a tela de Login</div>
+        <a class="return" [routerLink]="['/']"><b>← voltar</b></a>
+    </div>
+</div>
+
+<div *ngIf="tipo">
+    <h2>Cadastre-se:</h2>
+
+    <div class="label">
+        Nome de Usuario: <input type="textfield" [(ngModel)]="username" />
+    </div>
+    <br />
+
+    <div class="label">
+        E-mail: <input type="textfield" [(ngModel)]="email" />
+    </div>
+    <br />
+
+    <div class="label">Senha: <input type="password" [(ngModel)]="senha" /></div>
+    <br />
+
+    <div class="label">
+        Confirmar Senha: <input type="password" [(ngModel)]="conf_senha" />
+    </div>
+    <br />
+
+    <div class="button" (click)="cadastrar()">CADASTRAR</div>
+    <br />
+
+    <div (click)="resetar()" class="return"><b>← voltar</b></div>
+</div>
