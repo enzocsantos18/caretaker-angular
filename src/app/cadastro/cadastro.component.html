@@ -5,9 +5,9 @@
         funcionalidades
     </div>
     <br />
-    <div class="button" (click)="tipo_usuario('paciente')">SOU PACIENTE</div>
+    <div class="button" (click)="setTipoUsuario('paciente')">SOU PACIENTE</div>
     <br />
-    <div class="button" (click)="tipo_usuario('cuidador')">SOU CUIDADOR</div>
+    <div class="button" (click)="setTipoUsuario('cuidador')">SOU CUIDADOR</div>
     <br />
     <div style="display:flex;flex-direction:column;align-items:center;">
         <div class="small-text">Já tenho um conta, voltar para a tela de Login</div>
@@ -19,12 +19,16 @@
     <h2>Cadastre-se:</h2>
 
     <div class="label">
-        Nome de Usuario: <input type="textfield" [(ngModel)]="username" />
+        Nome de Usuario: <input type="textfield" [(ngModel)]="login" />
+    </div>
+    <br />
+    <div class="label">
+        Data nascimento: <input type="date" [(ngModel)]="nascimento" />
     </div>
     <br />
 
     <div class="label">
-        E-mail: <input type="textfield" [(ngModel)]="email" />
+        E-mail: <input type="email" [(ngModel)]="email" email="true"/>
     </div>
     <br />
 

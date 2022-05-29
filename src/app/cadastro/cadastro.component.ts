@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfoService } from '../info.service';
+import api from '../configs/api';
+import { UsuarioRequest } from '../models/usuario/usuario'
 
 @Component({
   selector: 'app-cadastro',
@@ -8,39 +10,78 @@ import { InfoService } from '../info.service';
 })
 export class CadastroComponent implements OnInit {
 
+
+  constructor(private router: Router, private http: HttpClient) { }
+
   // variaveis para mudar de pagina
   tipo: any = null;
   // variaveis de cadastro
-  username = '';
   email = '';
+  login = '';
   senha = '';
   conf_senha = '';
+  nascimento = '';
 
-  constructor(private router: Router) { }
   ngOnInit(): void {
   }
   /* funções para mudar entre as páginas */
   resetar() {
     // usuário retorna para pagina inicial
+    this.resetarCampos();
     this.tipo = null;
   }
 
-  tipo_usuario(tipo: string) {
+  resetarCampos() {
+    // usuário retorna para pagina inicial
+    this.email = ''
+    this.login = '';
+    this.senha = '';
+    this.conf_senha = '';
+    this.nascimento = '';
+  }
+
+  setTipoUsuario(tipo: string) {
     // usuário escolhe se 'paciente' ou 'cuidador'
     this.tipo = tipo;
   }
 
   /* funções após preencher cadastro */
   cadastrar() {
+
+    if (this.login === '' || this.senha === '' || this.email === '' || this.nascimento === '') {
+      return alert('Preencha todos os campos!');
+    }
+
+    if (this.login.length < 2) {
+      return alert('Nome de usuário deve conter mais de 2 caracteres');
+    }
+
+    if (this.senha.length < 4) {
+      return alert('Senha deve conter mais de 4 caracteres');
+    }
+
     if (this.senha !== this.conf_senha) {
       return alert('Confirme a senha!');
     }
 
-    if (this.username === '' || this.senha === '' || this.email === '') {
-      return alert('Preencha todos os campos!');
+    let data: string[] = this.nascimento.split("-")
+    let dataFinal = `${data[2]}/${data[1]}/${data[0]}`
+
+    const usuario: UsuarioRequest = {
+      login: this.login,
+      email: this.email,
+      senha: this.senha,
+      nascimento: dataFinal,
+      cuidador: this.tipo == 'cuidador'
     }
 
-    this.router.navigate(['/']);
+    this.http.post(api + 'usuarios', usuario)
+      .subscribe((data) => {
+        this.router.navigate(['/']);
+      }, err => {
+        this.resetarCampos()
+        return alert('Erro ao cadastrar usuário, tente novamente!');
+      })
   }
 
 }
