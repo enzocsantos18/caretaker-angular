@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import api from '../configs/api';
-import { UsuarioRequest } from '../models/usuario/usuario'
+import { UsuarioRequest } from '../models/usuario'
 
 @Component({
   selector: 'app-cadastro',

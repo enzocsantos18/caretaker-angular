@@ -1,35 +1,36 @@
-<a [routerLink]="['/main']"
-  ><div class="return"><b>← voltar</b></div></a
->
+<a [routerLink]="['/main']">
+  <div class="return"><b>← voltar</b></div>
+</a>
 <h2>Medicamentos</h2>
 
 <div *ngIf="!sucesso">
   <div class="label">
     Medicamento*: <br />
-    <input type="textfield" [(ngModel)]="medicamento" />
+    <input type="textfield" [(ngModel)]="nome" />
+  </div>
+  <div class="label">
+    Observação*: <br />
+    <input type="textfield" [(ngModel)]="obs_medicamento" />
   </div>
   <br />
   <div class="container label">
     Dosagem*:
     <input type="textfield" class="input" [(ngModel)]="dosagem" /> Qt*:
-    <input type="textfield" class="input" [(ngModel)]="qt" />
+    <input type="number" class="input" [(ngModel)]="qt_medicamento" />
   </div>
   <br />
   <div class="label">
-    Frequência (diária): <br />
-    <input type="textfield" [(ngModel)]="freq_dias" />
+    Frequência (diária)*: <br />
+    <input type="number" [(ngModel)]="qt_frequencia_diaria" />
   </div>
   <br />
   <div class="label">
-    Frequência (em horas): <br />
-    <input type="textfield" [(ngModel)]="freq_horas" />
+    Frequência (em horas)*: <br />
+    <input type="textfield" [(ngModel)]="ds_frequencia_horas" />
   </div>
   <br />
 
-  <div class="label">
-    Tratamento: <br />
-    <input type="textfield" [(ngModel)]="tratamento" />
-  </div>
+
   <br />
 
   <div class="button" (click)="adicionar()">CONFIRMAR</div>
@@ -39,8 +40,10 @@
 <div *ngIf="sucesso">
   <h2>Sucesso!</h2>
   O medicamento foi adicionado com sucesso! :)<br /><br />
-  <div *ngFor="let infos of info.get_lista_medicamentos(); index as i">
-    <p>{{ infos.medicamento }}</p>
-    <p>{{ infos.dosagem }}</p>
+  <div >
+    <p>Nome: {{ nome }}</p>
+    <p>Dosagem: {{ dosagem }}</p>
+    <p>Quantidade: {{ qt_medicamento }}</p>
+    <p>Freqência: {{ qt_frequencia_diaria }} diariamente</p>
   </div>
 </div>
