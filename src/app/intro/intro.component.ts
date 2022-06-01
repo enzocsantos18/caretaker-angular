@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { InfoService } from '../info.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class IntroComponent {
   username = '';
   senha = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   entrar() {
     // usuário clica 'entrar'
@@ -22,8 +23,17 @@ export class IntroComponent {
       return alert('Preencha todos os campos!');
     }
 
-    this.router.navigate(['/', 'main']);
-  }
+    this.authService.login({
+      login: this.username,
+      senha: this.senha
+    }).subscribe((data) => {
+      this.authService.usuario = data
+      this.router.navigate(['/', 'main']);
 
+    }, err => {
+      return alert("Usuário e/ou senha inválidos")
+    })
+
+  }
 
 }

@@ -3,7 +3,7 @@
     Bem-vinde, <b>{{ user_name }}</b
     >!
   </h1>
-  <a [routerLink]="['/']">
+  <a (click)="sair()">
     <span class="logout material-icons">power_settings_new</span></a
   >
   <div class="grid">

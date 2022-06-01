@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { InfoService } from '../info.service';
 
 @Component({
@@ -7,13 +9,21 @@ import { InfoService } from '../info.service';
   styleUrls: ['./area-paciente.component.css'],
 })
 export class AreaPacienteComponent {
-  user_name: string;
+  user_name: string | null = null;
 
-  constructor(public info: InfoService) {
-    this.user_name = this.info.nome_usuario;
+  constructor(private authService: AuthService, private router: Router) {
+    if(this.authService.usuario?.email) {
+      this.user_name = this.authService.usuario?.username
+    }
   }
 
   click_icon(icon: string) {
     alert('Clicou em ' + icon);
+  }
+
+
+  sair() {
+    this.authService.sair();
+    this.router.navigate(['/'])
   }
 }

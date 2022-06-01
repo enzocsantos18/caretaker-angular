@@ -13,6 +13,8 @@ import { IntroComponent } from './intro/intro.component';
 import { AddAlarmeComponent } from './add-alarme/add-alarme.component';
 import { AddConsultasComponent } from './add-consultas/add-consultas.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { AuthService } from './auth.service';
+import { LoggedInGuard } from './login.guard';
 
 @NgModule({
   imports: [
@@ -20,13 +22,13 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'app', component: AppComponent },
+      { path: 'app', component: AppComponent, canActivate: [LoggedInGuard]  },
       { path: '', component: IntroComponent },
-      { path: 'main', component: AreaPacienteComponent },
-      { path: 'medicamento', component: AddMedicComponent },
-      { path: 'agenda', component: AgendaComponent },
-      { path: 'consulta', component: AddConsultasComponent},
-      { path: 'alarme', component:AddAlarmeComponent},
+      { path: 'main', component: AreaPacienteComponent, canActivate: [LoggedInGuard] },
+      { path: 'medicamento', component: AddMedicComponent, canActivate: [LoggedInGuard] },
+      { path: 'agenda', component: AgendaComponent, canActivate: [LoggedInGuard] },
+      { path: 'consulta', component: AddConsultasComponent, canActivate: [LoggedInGuard]},
+      { path: 'alarme', component:AddAlarmeComponent, canActivate: [LoggedInGuard]},
       { path: 'cadastro', component:CadastroComponent},
     ]),
   ],
@@ -41,6 +43,6 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     CadastroComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [InfoService],
+  providers: [InfoService, AuthService, LoggedInGuard],
 })
 export class AppModule { }

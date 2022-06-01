@@ -60,7 +60,6 @@ export class InfoService {
       freq_horas,
       tratamento,
     });
-    console.log(this.lista_medicamentos);
   }
 
   get_lista_medicamentos() {

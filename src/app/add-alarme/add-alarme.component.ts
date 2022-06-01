@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import api from '../configs/api';
 import { InfoService } from '../info.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class AddAlarmeComponent implements OnInit {
   data: string ='';
   time: string ='';
 
-  constructor(public info: InfoService) {}
+  constructor(public info: InfoService, private http: HttpClient) {}
 
   ngOnInit() {}
 
@@ -21,6 +23,17 @@ export class AddAlarmeComponent implements OnInit {
       return alert('Preencha todos os campos!');
     }
     alert("este alarme irá ser agendado")
+  }
+
+  getListaMedicamentos() {
+    this.http.get(api + 'medicamentos')
+    .subscribe((data) => {
+
+    }, err => {
+
+    }
+    ); 
+  
   }
 
   
