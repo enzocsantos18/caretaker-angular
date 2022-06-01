@@ -35,17 +35,6 @@ export class AddConsultasComponent implements OnInit {
       return alert('Preencha todos os campos!');
     }
 
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('Content-Type', 'application/json');
-    httpHeaders.append("Authorization", "Bearer " + this.authService.usuario!.token);
-
-    const httpOptions = {
-      headers: httpHeaders
-    };
-
-    console.log(httpOptions)
-
-    console.table(httpHeaders)
     const consulta: ConsultaRequest = {
       nome: this.nome,
       data: this.data,
@@ -54,10 +43,8 @@ export class AddConsultasComponent implements OnInit {
       id_usuario: this.authService.usuario!.id
     }
 
-    this.http.post(api + "consulta", consulta, httpOptions).subscribe((data) => {
-      this.router.navigate(['/', 'main'])
-      alert("Consulta agendada com sucesso")
-
+    this.http.post(api + "consulta", consulta).subscribe((data) => {
+      this.sucesso = true
     }, err => {
       this.limparCampos()
       return alert('Erro ao agendar consulta')

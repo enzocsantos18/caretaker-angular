@@ -32,13 +32,6 @@ export class AddMedicComponent implements OnInit {
      return alert('Preencha todos campos de forma correta')
     }
 
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.append('Content-Type', 'application/json');
-    httpHeaders.append("Authorization", "Bearer " + this.authService.usuario!.token);
-
-    const httpOptions = {
-      headers: httpHeaders
-    };
 
     const medicamento: MedicamentoRequest = {
       nome: this.nome,
@@ -50,7 +43,7 @@ export class AddMedicComponent implements OnInit {
       id_usuario: this.authService.usuario!.id
     }
    
-    this.http.post(api + "medicamento", medicamento, httpOptions).subscribe((data) => {
+    this.http.post(api + "medicamento", medicamento).subscribe((data) => {
       this.sucesso = true;
     }, err => {
       return alert('Erro ao cadastrar medicamento')
