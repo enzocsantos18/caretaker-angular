@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { InfoService } from '../info.service';
 
 @Component({
   selector: 'app-intro',

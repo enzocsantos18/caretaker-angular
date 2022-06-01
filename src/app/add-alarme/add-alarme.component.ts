@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import api from '../configs/api';
-import { InfoService } from '../info.service';
 
 @Component({
   selector: 'app-add-alarme',
@@ -14,7 +13,7 @@ export class AddAlarmeComponent implements OnInit {
   data: string ='';
   time: string ='';
 
-  constructor(public info: InfoService, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 

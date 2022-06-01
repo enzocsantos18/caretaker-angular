@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import api from '../configs/api';
-import { InfoService } from '../info.service';
 import { MedicamentoRequest } from '../models/medicamento';
 
 @Component({
@@ -18,7 +18,7 @@ export class AddMedicComponent implements OnInit {
   qt_frequencia_diaria: number = 0;
   ds_frequencia_horas: string ='';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -32,6 +32,14 @@ export class AddMedicComponent implements OnInit {
      return alert('Preencha todos campos de forma correta')
     }
 
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('Content-Type', 'application/json');
+    httpHeaders.append("Authorization", "Bearer " + this.authService.usuario!.token);
+
+    const httpOptions = {
+      headers: httpHeaders
+    };
+
     const medicamento: MedicamentoRequest = {
       nome: this.nome,
       dosagem: this.dosagem,
@@ -39,10 +47,10 @@ export class AddMedicComponent implements OnInit {
       ds_frequencia_horas: this.ds_frequencia_horas,
       qt_frequencia_diaria: this.qt_frequencia_diaria,
       qt_medicamento: this.qt_medicamento,
-      id_usuario: 1
+      id_usuario: this.authService.usuario!.id
     }
    
-    this.http.post(api + "medicamentos", medicamento).subscribe((data) => {
+    this.http.post(api + "medicamento", medicamento, httpOptions).subscribe((data) => {
       this.sucesso = true;
     }, err => {
       return alert('Erro ao cadastrar medicamento')

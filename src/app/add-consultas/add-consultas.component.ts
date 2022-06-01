@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import api from '../configs/api';
 import { ConsultaRequest } from '../models/consulta';
 
@@ -10,38 +12,58 @@ import { ConsultaRequest } from '../models/consulta';
 })
 export class AddConsultasComponent implements OnInit {
   sucesso = false;
-  nome: string ='';
+  nome: string = '';
   descricao: string = '';
-  data: string ='';
-  hora: string ='';
-  tratamento: string='';
+  data: string = '';
+  hora: string = '';
+  tratamento: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  limparCampos() {
+    this.nome = '';
+    this.descricao = '';
+    this.data = '';
+    this.hora = '';
+    this.tratamento = '';
+  }
 
   adicionar() {
-    if (this.data === '' || this.hora === '' || this.nome ==='') {
+    if (this.data === '' || this.hora === '' || this.nome === '') {
       return alert('Preencha todos os campos!');
     }
 
-    const consulta : ConsultaRequest = {
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('Content-Type', 'application/json');
+    httpHeaders.append("Authorization", "Bearer " + this.authService.usuario!.token);
+
+    const httpOptions = {
+      headers: httpHeaders
+    };
+
+    console.log(httpOptions)
+
+    console.table(httpHeaders)
+    const consulta: ConsultaRequest = {
       nome: this.nome,
       data: this.data,
       descricao: this.descricao,
       hora: this.hora,
-      id_usuario: 1
+      id_usuario: this.authService.usuario!.id
     }
-  
-    this.http.post(api + "consulta", consulta).subscribe((data) => {
-      return alert("Consulta agendada com sucesso")
+
+    this.http.post(api + "consulta", consulta, httpOptions).subscribe((data) => {
+      this.router.navigate(['/', 'main'])
+      alert("Consulta agendada com sucesso")
 
     }, err => {
-      console.log(err)
+      this.limparCampos()
       return alert('Erro ao agendar consulta')
     })
 
-    
+
   }
 
 }
