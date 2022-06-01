@@ -7,3 +7,8 @@ export interface MedicamentoRequest {
     qt_medicamento: number;
     id_usuario: number;
 }
+
+export interface MedicamentoList {
+    nome: string,
+    id: number
+}

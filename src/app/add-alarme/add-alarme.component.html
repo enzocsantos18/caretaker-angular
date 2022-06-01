@@ -6,8 +6,10 @@
 <div *ngIf="!sucesso">
   <div class="label">
     Medicamento*: <br />
-    <input type="text" [(ngModel)]="medicamento" />
-  </div>
+    <select [(ngModel)]="medicamento">
+      <option *ngFor="let x of listaMedicamentos" [ngValue]="x" >{{x.nome}}</option>
+  </select>  
+</div>
   <div class="label">
     Data*: <br />
     <input type="date" [(ngModel)]="data" />
@@ -15,7 +17,7 @@
   <br />
   <div class="label">
     Hora*: <br />
-    <input type="time" [(ngModel)]="time" />
+    <input type="time" step="2" [(ngModel)]="time" />
   </div>
   <br />
 
@@ -23,11 +25,12 @@
   <br />
 </div>
 
-<!-- <div *ngIf="sucesso">
+<div *ngIf="sucesso">
   <h2>Sucesso!</h2>
-  O medicamento foi adicionado com sucesso! :)<br /><br />
-  <div *ngFor="let infos of info.get_lista_medicamentos(); index as i">
-    <p>{{ infos.medicamento }}</p>
-    <p>{{ infos.dosagem }}</p>
+  O alarme foi adicionado com sucesso! :)<br /><br />
+  <div>
+    <p>Medicamento: {{medicamento.nome}}</p>
+    <p>Data: {{data}}</p>
+    <p>Hora: {{time}}</p>
   </div>
-</div> -->
+</div>
