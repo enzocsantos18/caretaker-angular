@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { InfoService } from 'src/app/info.service';
 import { AddMedicComponent } from './add-medic/add-medic.component';
 import { AgendaComponent } from './agenda/agenda.component';
 
@@ -22,14 +21,14 @@ import { LoggedInGuard } from './login.guard';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'app', component: AppComponent, canActivate: [LoggedInGuard]  },
+      { path: 'app', component: AppComponent, canActivate: [LoggedInGuard] },
       { path: '', component: IntroComponent },
       { path: 'main', component: AreaPacienteComponent, canActivate: [LoggedInGuard] },
       { path: 'medicamento', component: AddMedicComponent, canActivate: [LoggedInGuard] },
       { path: 'agenda', component: AgendaComponent, canActivate: [LoggedInGuard] },
-      { path: 'consulta', component: AddConsultasComponent, canActivate: [LoggedInGuard]},
-      { path: 'alarme', component:AddAlarmeComponent, canActivate: [LoggedInGuard]},
-      { path: 'cadastro', component:CadastroComponent},
+      { path: 'consulta', component: AddConsultasComponent, canActivate: [LoggedInGuard] },
+      { path: 'alarme', component: AddAlarmeComponent, canActivate: [LoggedInGuard] },
+      { path: 'cadastro', component: CadastroComponent },
     ]),
   ],
   declarations: [
@@ -43,6 +42,5 @@ import { LoggedInGuard } from './login.guard';
     CadastroComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [InfoService, AuthService, LoggedInGuard],
-})
-export class AppModule { }
+  providers: [AuthService, LoggedInGuard],
+}) export class AppModule { }
