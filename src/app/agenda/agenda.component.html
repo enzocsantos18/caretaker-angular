@@ -4,14 +4,22 @@
     <dl-date-time-picker
       class="datepicker"
       maxView="year"
-      minView="minute"
+      minView="day"
       startView="day"
-      [(ngModel)]="minuteStep"
       [(ngModel)]="selectedDate"
+      (change)="dateSelect()"
     >
     </dl-date-time-picker>
   </div>
 </div>
 
-<div *ngIf="data"></div>
+<div *ngFor="let item of lista">
+  <div class="alarme">
+    <div class="alarme--date">{{ item.data }}</div>
+    <div class="alarme--infos">
+      <p class="infos--nome">{{ item.nome }}</p>
+      <p class="infos--hora">{{ item.hora }}</p>
+    </div>
+  </div>
+</div>
 <a [routerLink]="['/main']" class="return"><b>← voltar</b></a>

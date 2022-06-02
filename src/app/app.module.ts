@@ -15,20 +15,46 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { AuthService } from './auth.service';
 import { LoggedInGuard } from './login.guard';
 import { AuthInterceptor } from './auth.interceptor';
+import {
+  DlDateTimeDateModule,
+  DlDateTimePickerModule,
+} from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    DlDateTimeDateModule,
+    DlDateTimePickerModule,
     RouterModule.forRoot([
       { path: 'app', component: AppComponent, canActivate: [LoggedInGuard] },
       { path: '', component: IntroComponent },
-      { path: 'main', component: AreaPacienteComponent, canActivate: [LoggedInGuard] },
-      { path: 'medicamento', component: AddMedicComponent, canActivate: [LoggedInGuard] },
-      { path: 'agenda', component: AgendaComponent, canActivate: [LoggedInGuard] },
-      { path: 'consulta', component: AddConsultasComponent, canActivate: [LoggedInGuard] },
-      { path: 'alarme', component: AddAlarmeComponent, canActivate: [LoggedInGuard] },
+      {
+        path: 'main',
+        component: AreaPacienteComponent,
+        canActivate: [LoggedInGuard],
+      },
+      {
+        path: 'medicamento',
+        component: AddMedicComponent,
+        canActivate: [LoggedInGuard],
+      },
+      {
+        path: 'agenda',
+        component: AgendaComponent,
+        canActivate: [LoggedInGuard],
+      },
+      {
+        path: 'consulta',
+        component: AddConsultasComponent,
+        canActivate: [LoggedInGuard],
+      },
+      {
+        path: 'alarme',
+        component: AddAlarmeComponent,
+        canActivate: [LoggedInGuard],
+      },
       { path: 'cadastro', component: CadastroComponent },
     ]),
   ],
@@ -43,9 +69,14 @@ import { AuthInterceptor } from './auth.interceptor';
     CadastroComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [AuthService, LoggedInGuard, {
-    provide : HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi   : true,
-  },],
-}) export class AppModule { }
+  providers: [
+    AuthService,
+    LoggedInGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+})
+export class AppModule {}

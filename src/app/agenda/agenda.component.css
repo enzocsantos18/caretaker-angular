@@ -19,3 +19,33 @@ td:hover {
   color: purple;
   background-color: white;
 }
+
+.alarme {
+  display: flex;
+  column-gap: 4px;
+}
+
+.alarme--date {
+  padding: 10px;
+  border: 1px solid #828181;
+  font-weight: bold;
+}
+
+.alarme--infos {
+  width: 100%;
+  background-color: #bababa;
+}
+
+.infos--nome {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.infos--hora {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 10px;
+  color: black;
+  margin-bottom: 0px;
+}
