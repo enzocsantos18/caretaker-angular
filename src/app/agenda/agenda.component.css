@@ -23,6 +23,7 @@ td:hover {
 .alarme {
   display: flex;
   column-gap: 5px;
+  margin-bottom: 10px;
 }
 
 .alarme--date {
@@ -42,6 +43,16 @@ td:hover {
   background-color: #cfbfff90;
   border-radius: 2px;
   padding: 5px 0px;
+}
+
+.alarme--config {
+  width: 50px;
+  background-color: #cfbfff90;
+  border-radius: 2px;
+  font-size: 22px;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .infos--nome {
