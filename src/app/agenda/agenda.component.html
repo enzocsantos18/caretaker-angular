@@ -15,14 +15,14 @@
   </div>
 </div>
 
-<div *ngFor="let item of lista">
+<div *ngFor="let item of lista; let i = index">
   <div class="alarme">
     <div class="alarme--date">{{ item.data }}</div>
     <div class="alarme--infos">
       <p class="infos--nome">{{ item.nome }}</p>
       <p class="infos--hora">{{ item.hora }}</p>
     </div>
-    <div class="alarme--config material-icons" [routerLink]="['/agenda/id']">edit</div>
-    <div class="alarme--config material-icons">delete</div>
+    <div class="alarme--config material-icons" [routerLink]="['/agenda/',i]">edit</div>
+    <div class="alarme--config material-icons" (click)="apagarEvento()">delete</div>
   </div>
 </div>

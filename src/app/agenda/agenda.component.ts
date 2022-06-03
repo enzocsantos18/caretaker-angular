@@ -31,6 +31,10 @@ export class AgendaComponent {
 
   dateSelect() {}
 
+  apagarEvento(){
+    alert('Esse evento irá ser apagado')
+  }
+
   getData() {
     this.http
       .get<Lembrete[]>(api + `lembrete/usuario/${this.authService.usuario?.id}`)
