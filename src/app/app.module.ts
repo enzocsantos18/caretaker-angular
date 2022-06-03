@@ -19,6 +19,7 @@ import {
   DlDateTimeDateModule,
   DlDateTimePickerModule,
 } from 'angular-bootstrap-datetimepicker';
+import { EditAgendaComponent } from './edit-agenda/edit-agenda.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,11 @@ import {
         canActivate: [LoggedInGuard],
       },
       { path: 'cadastro', component: CadastroComponent },
+      {
+        path: 'alarme/:id',
+        component: EditAgendaComponent,
+        canActivate: [LoggedInGuard],
+      },
     ]),
   ],
   declarations: [
@@ -67,6 +73,7 @@ import {
     AddAlarmeComponent,
     AddConsultasComponent,
     CadastroComponent,
+    EditAgendaComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
