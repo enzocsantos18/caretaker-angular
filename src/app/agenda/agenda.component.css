@@ -55,6 +55,12 @@ td:hover {
   padding-top: 10px;
 }
 
+.alarme--config:hover{
+  background-color: #7a51af;
+  color:#FFF;
+
+}
+
 .infos--nome {
   margin-top: 0px;
   margin-bottom: 0px;
