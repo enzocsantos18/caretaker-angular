@@ -31,8 +31,8 @@ export class AgendaComponent {
 
   dateSelect() {}
 
-  apagarEvento(){
-    alert('Esse evento irá ser apagado')
+  apagarEvento(id : any){
+    alert('O evento de id ' + id + ' irá ser apagado')
   }
 
   getData() {
