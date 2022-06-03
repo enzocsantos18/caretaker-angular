@@ -58,7 +58,7 @@ import { EditAgendaComponent } from './edit-agenda/edit-agenda.component';
       },
       { path: 'cadastro', component: CadastroComponent },
       {
-        path: 'alarme/:id',
+        path: 'agenda/:id',
         component: EditAgendaComponent,
         canActivate: [LoggedInGuard],
       },
