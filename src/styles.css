@@ -114,7 +114,7 @@ body {
     font-weight: 500;
   }
   
-  input {
+  input, select {
     width: 100%;
     border: none;
     border-radius: 3px;
@@ -136,6 +136,10 @@ body {
   
   
 /* calendario, cuidado se mexer aqui */
+
+.datepicker {
+  margin: 20px 0;
+}
 
 .row {
   display: flex;
@@ -177,21 +181,17 @@ button {
 }
 
 .dl-abdtp-now {
-  padding: 0 !important;
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50px !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 }
 
 .dl-abdtp-selected {
-  border-radius: 50px !important;
+  border-radius: 5px !important;
   font-weight: bold;
-  padding: 0 !important;
-  width: 40px !important;
-  height: 40px !important;
+  padding: 5px 10px !important;
   background: #7a51af !important;
   display: flex !important;
   justify-content: center !important;
