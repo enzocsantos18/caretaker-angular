@@ -25,8 +25,6 @@ export class AddMedicComponent implements OnInit {
   adicionar() {
     if(this.nome === '' ||
     this.dosagem === '' ||
-    this.obs_medicamento === '' ||
-    this.ds_frequencia_horas === '' ||
     this.qt_frequencia_diaria === 0 ||
     this.qt_medicamento === 0 ) {
      return alert('Preencha todos campos de forma correta')

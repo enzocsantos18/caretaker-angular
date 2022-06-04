@@ -9,7 +9,7 @@
     <input type="textfield" [(ngModel)]="nome" />
   </div>
   <div class="label">
-    Observação*: <br />
+    Observação: <br />
     <input type="textfield" [(ngModel)]="obs_medicamento" />
   </div>
   <br />
@@ -25,14 +25,10 @@
   </div>
   <br />
   <div class="label">
-    Frequência (em horas)*: <br />
+    Frequência (em horas): <br />
     <input type="textfield" [(ngModel)]="ds_frequencia_horas" />
   </div>
   <br />
-
-
-  <br />
-
   <div class="button" (click)="adicionar()">CONFIRMAR</div>
   <br />
 </div>
@@ -40,10 +36,10 @@
 <div *ngIf="sucesso">
   <h2>Sucesso!</h2>
   O medicamento foi adicionado com sucesso! :)<br /><br />
-  <div >
-    <p>Nome: {{ nome }}</p>
-    <p>Dosagem: {{ dosagem }}</p>
-    <p>Quantidade: {{ qt_medicamento }}</p>
-    <p>Freqência: {{ qt_frequencia_diaria }} diariamente</p>
+  <div class="sucesso-adicionado">
+    <div><b>Nome:</b> {{ nome }}</div>
+    <div><b>Dosagem:</b> {{ dosagem }}</div>
+    <div><b>Quantidade:</b> {{ qt_medicamento }}</div>
+    <div><b>Frequência:</b> {{ qt_frequencia_diaria }} por dia</div>
   </div>
 </div>
