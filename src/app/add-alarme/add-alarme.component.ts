@@ -29,7 +29,7 @@ export class AddAlarmeComponent implements OnInit {
 
     this.http.post(api + `lembrete`, {
       data: this.data,
-      hora: this.time,
+      hora: this.time + ':00',
       id_medicamento: parseInt(this.medicamento.id),
       id_usuario: this.authService.usuario?.id
     })
