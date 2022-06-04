@@ -57,7 +57,7 @@ export class CadastroComponent implements OnInit {
     }
 
     if (this.senha.length < 4) {
-      return alert('Senha deve conter mais de 4 caracteres');
+      return alert('Senha deve conter de 4 ou mais caracteres');
     }
 
     if (this.senha !== this.conf_senha) {
