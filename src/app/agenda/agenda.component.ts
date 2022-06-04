@@ -13,23 +13,40 @@ import { General } from '../models/general';
   templateUrl: './agenda.component.html',
   styleUrls: ['./agenda.component.css'],
 })
+
 export class AgendaComponent {
   pipe = new DatePipe('en-US');
   data: string | null = '';
   minuteStep = 5;
-  selectedDate: Date | null = new Date();
+  selectedDate: Date = new Date();
+  data_selecionada: any
 
   listaConsulta: Consulta[] = [];
   listaLembrete: Lembrete[] = [];
   lista: General[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {
+
+  }
 
   ngOnInit() {
     this.getData();
+    this.getSelectedDate();
   }
 
-  dateSelect() {}
+  dateSelect() {
+    console.log(this.selectedDate)
+  }
+
+  getSelectedDate() {
+    if (this.selectedDate !== null) {
+      // en-GB formata a data para mostrar dias e meses com dois digitos
+      // assim como está salvo no banco de dados
+      const hoje = new Intl.DateTimeFormat('en-GB').format(this.selectedDate).split('/');
+      return this.data_selecionada = hoje
+    }
+    return false
+  }
 
   apagarEvento(id : any){
     alert('O evento de id ' + id + ' irá ser apagado')
@@ -64,8 +81,8 @@ export class AgendaComponent {
   }
 
   orderByDate() {
-    console.log(this.listaConsulta);
-    console.log(this.listaLembrete);
+    // console.log(this.listaConsulta);
+    // console.log(this.listaLembrete);
 
     this.listaLembrete.map((lembrete) => {
       const item = {
@@ -73,7 +90,13 @@ export class AgendaComponent {
         hora: lembrete.hora.substring(0, 5),
         nome: lembrete.medicamento.nome,
       };
-      this.lista.push(item);
+      const data_lembrete = lembrete.data.split('-')
+      if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função
+
+      if (this.data_selecionada[1] === data_lembrete[1] && // mesmo mês do atual do calendário
+          this.data_selecionada[2] === data_lembrete [0]) { // mesmo ano do atual do calendário
+            this.lista.push(item);
+      }
     });
     this.listaConsulta.map((consulta) => {
       const item = {
@@ -81,9 +104,13 @@ export class AgendaComponent {
         hora: consulta.hora.substring(0, 5),
         nome: consulta.nome,
       };
-      this.lista.push(item);
-    });
+      const data_consulta = consulta.data.split('-')
+      if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função
 
-    console.log(this.lista);
+      if (this.data_selecionada[1] === data_consulta[1] && // mesmo mês do atual do calendário
+          this.data_selecionada[2] === data_consulta [0]) { // mesmo ano do atual do calendário
+            this.lista.push(item);
+      }
+    });
   }
 }

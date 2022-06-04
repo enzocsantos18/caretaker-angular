@@ -167,6 +167,33 @@ button {
   font-family: 'Material Icons';
 }
 
+.dl-abdtp-date-button {
+  padding: 10px !important;
+}
+
+.dl-abdtp-future,
+.dl-abdtp-past {
+  color: #cfbfff90 !important;
+}
+
 .dl-abdtp-now {
-  border-radius: 2px !important;
+  padding: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.dl-abdtp-selected {
+  border-radius: 50px !important;
+  font-weight: bold;
+  padding: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: #7a51af !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
