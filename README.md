@@ -6,8 +6,8 @@
 
 ## Linguagens 👨‍💻👩‍💻
 
-💻 Esse repositório mantém o *front-end* da aplicação, que foi escrito em TypeScript (AngularJs), além de HTML e CSS.
+💻 Esse repositório mantém o *front-end* da aplicação, que foi escrito em TypeScript e JavaScript (AngularJs), além de HTML e CSS.
 
 ## Integrantes 🎓
 
-> Essa aplicação é parte do projeto interdisciplinar do curso de Sistemas para Internet da FATEC-RL, para o curso de **Tópicos Especiais em Sistemas para Internet II**. O grupo conta com **Ana Carolina Rocha**, **Enzo Santos**, **Julia Gato** e **Marjorye Ramirez**.
+> Essa aplicação é parte do projeto interdisciplinar do curso de Sistemas para Internet da FATEC-RL, para a matéria de **Tópicos Especiais em Sistemas para Internet II**. O grupo conta com **Ana Carolina Rocha**, **Enzo Santos**, **Julia Gato** e **Marjorye Ramirez**.
