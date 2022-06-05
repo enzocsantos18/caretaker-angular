@@ -1,7 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AgendaInfoService } from '../agenda-info.service';
 import { Consulta } from '../models/consulta';
 
 import api from '../configs/api';
@@ -28,7 +30,7 @@ export class AgendaComponent {
   listaLembrete: Lembrete[] = [];
   lista: General[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private http: HttpClient, private authService: AuthService, private info: AgendaInfoService, private router: Router) {
     this.prev = false;
     this.next = false;
   }
@@ -92,10 +94,6 @@ export class AgendaComponent {
     this.orderByDate();
   }
 
-  selecionarData() {
-    
-  }
-
   getSelectedDate() {
     if (this.selectedDate !== undefined) {
       // en-GB formata a data para mostrar dias e meses com dois digitos
@@ -106,8 +104,12 @@ export class AgendaComponent {
     return false
   }
 
-  apagarEvento(id : any){
-    alert('O evento de id ' + id + ' irá ser apagado')
+  editarEvento(item: any, i: any) {
+    this.router.navigate(['/agenda/', item.tipo, i]);
+  }
+
+  apagarEvento(id: any){
+    this.lista.splice(id, 1)
   }
 
   getData() {
@@ -117,7 +119,8 @@ export class AgendaComponent {
       .subscribe(
         (data) => {
           this.listaLembrete = data;
-
+          this.info.setAlarmes(data);
+          console.log(data)
           this.http
             .get<Consulta[]>(
               api + `consulta/usuario/${this.authService.usuario?.id}`
@@ -125,7 +128,8 @@ export class AgendaComponent {
             .subscribe(
               (data) => {
                 this.listaConsulta = data;
-
+                this.info.setConsultas(data);
+                console.log(data)
                 // Ordena e preenche a lista que aparece embaixo do calendário
                 this.orderByDate();
               },
@@ -149,6 +153,7 @@ export class AgendaComponent {
         data: this.pipe.transform(lembrete.data, 'dd') ?? '',
         hora: lembrete.hora.substring(0, 5),
         nome: lembrete.medicamento.nome,
+        tipo: 'lembrete'
       };
       const data_lembrete = lembrete.data.split('-')
       if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função
@@ -162,6 +167,7 @@ export class AgendaComponent {
         data: this.pipe.transform(consulta.data, 'dd') ?? '',
         hora: consulta.hora.substring(0, 5),
         nome: consulta.nome,
+        tipo: 'consulta'
       };
       const data_consulta = consulta.data.split('-')
       if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função

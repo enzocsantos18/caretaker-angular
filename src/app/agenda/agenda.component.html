@@ -6,7 +6,6 @@
       minView="day"
       startView="day"
       [(ngModel)]="selectedDate"
-      (change)="selecionarData()"
     >
     </dl-date-time-picker>
   </div>
@@ -19,7 +18,7 @@
       <p class="infos--nome">{{ item.nome }}</p>
       <p class="infos--hora">{{ item.hora }}</p>
     </div>
-    <div class="alarme--config material-icons" [routerLink]="['/agenda/',i]">edit</div>
+    <div class="alarme--config material-icons" (click)="editarEvento(item, i)">edit</div>
     <div class="alarme--config material-icons" (click)="apagarEvento(i)">delete</div>
   </div>
 </div>

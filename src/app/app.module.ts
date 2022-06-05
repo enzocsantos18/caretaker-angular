@@ -12,6 +12,8 @@ import { IntroComponent } from './intro/intro.component';
 import { AddAlarmeComponent } from './add-alarme/add-alarme.component';
 import { AddConsultasComponent } from './add-consultas/add-consultas.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+
+import { AgendaInfoService } from './agenda-info.service';
 import { AuthService } from './auth.service';
 import { LoggedInGuard } from './login.guard';
 import { AuthInterceptor } from './auth.interceptor';
@@ -58,7 +60,7 @@ import { EditAgendaComponent } from './edit-agenda/edit-agenda.component';
       },
       { path: 'cadastro', component: CadastroComponent },
       {
-        path: 'agenda/:id',
+        path: 'agenda/:tipo/:id',
         component: EditAgendaComponent,
         canActivate: [LoggedInGuard],
       },
@@ -77,6 +79,7 @@ import { EditAgendaComponent } from './edit-agenda/edit-agenda.component';
   ],
   bootstrap: [AppComponent],
   providers: [
+    AgendaInfoService,
     AuthService,
     LoggedInGuard,
     {
