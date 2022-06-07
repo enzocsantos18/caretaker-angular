@@ -1,0 +1,59 @@
+<a [routerLink]="['/agenda']" class="return"><b>← voltar</b></a>
+
+<h2>Editar {{ tipo }}</h2>
+
+<div *ngIf="!sucesso">
+  <div *ngIf="tipo === 'Consulta';">
+      <div class="label">
+        Nome*: <br />
+        <input type="textfield" [(ngModel)]="nome"/>
+      </div>
+      <br />
+      <div class="label">
+        Descrição*: <br />
+        <input type="textfield" [(ngModel)]="descricao" />
+      </div>
+      <br />
+      <div class="label">
+        Data*: <br />
+        <input type="date" [(ngModel)]="data" />
+      </div>
+      <br />
+
+      <div class="label">
+        Hora*: <br />
+        <input type="time" step="60" [(ngModel)]="time" />
+      </div>
+      <br />
+  </div>
+
+  <div *ngIf="tipo === 'Lembrete';">
+      <div class="label">
+      Medicamento*: <br />
+      <select [(ngModel)]="medicamento">
+        <option [value]="medicamento" hidden>{{medicamento}}</option>
+        <option *ngFor="let x of listaMedicamentos" [ngValue]="x">{{x.nome}}</option>
+    </select>  
+  </div>
+  <br />
+    <div class="label">
+      Data*: <br />
+      <input type="date" [(ngModel)]="data" />
+    </div>
+    <br />
+    <div class="label">
+      Hora*: <br />
+      <input type="time" step="60" [(ngModel)]="time" />
+    </div>
+    <br />
+  </div>
+
+  <div class="button" (click)="confirmar()">CONFIRMAR</div>
+    <br />
+
+</div>
+
+<div *ngIf="sucesso">
+  <h2>Sucesso!</h2>
+  Dados editados com sucesso! :)<br /><br />
+</div>

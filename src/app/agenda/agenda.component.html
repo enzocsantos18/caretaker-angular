@@ -1,25 +1,24 @@
-<h2>Agenda</h2>
+<a [routerLink]="['/main']" class="return"><b>← voltar</b></a>
 <div *ngIf="!data">
-  <div>
+  <div class="datepicker">
     <dl-date-time-picker
-      class="datepicker"
       maxView="year"
       minView="day"
       startView="day"
       [(ngModel)]="selectedDate"
-      (change)="dateSelect()"
     >
     </dl-date-time-picker>
   </div>
 </div>
 
-<div *ngFor="let item of lista">
+<div *ngFor="let item of lista; let i = index">
   <div class="alarme">
     <div class="alarme--date">{{ item.data }}</div>
     <div class="alarme--infos">
       <p class="infos--nome">{{ item.nome }}</p>
       <p class="infos--hora">{{ item.hora }}</p>
     </div>
+    <div class="alarme--config material-icons" (click)="editarEvento(item, i)">edit</div>
+    <div class="alarme--config material-icons" (click)="apagarEvento(i)">delete</div>
   </div>
 </div>
-<a [routerLink]="['/main']" class="return"><b>← voltar</b></a>

@@ -22,30 +22,58 @@ td:hover {
 
 .alarme {
   display: flex;
-  column-gap: 4px;
+  column-gap: 5px;
+  margin-bottom: 10px;
 }
 
 .alarme--date {
   padding: 10px;
-  border: 1px solid #828181;
+  border-radius: 2px;
+  background-color: #7a51af;
+  color: #fff;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
 }
 
 .alarme--infos {
   width: 100%;
-  background-color: #bababa;
+  background-color: #cfbfff90;
+  border-radius: 2px;
+  padding: 5px 0px;
+}
+
+.alarme--config {
+  width: 50px;
+  background-color: #cfbfff90;
+  border-radius: 2px;
+  font-size: 22px;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.alarme--config:hover{
+  background-color: #7a51af;
+  color:#FFF;
+
 }
 
 .infos--nome {
   margin-top: 0px;
   margin-bottom: 0px;
   text-align: center;
+  color: #7a51af;
+  font-size: 18px;
 }
 
 .infos--hora {
   margin-top: 0px;
   text-align: center;
   font-size: 10px;
-  color: black;
+  font-weight: bold;
+  color: #7a51af;
   margin-bottom: 0px;
 }
