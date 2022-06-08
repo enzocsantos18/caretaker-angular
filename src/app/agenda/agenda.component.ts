@@ -18,6 +18,8 @@ import { General } from '../models/general';
 
 export class AgendaComponent {
   pipe = new DatePipe('en-US');
+  sucesso = false
+
   data: string | null = '';
   minuteStep = 5;
   selectedDate: Date = new Date();
@@ -25,6 +27,7 @@ export class AgendaComponent {
   prev: any
   next: any
   get_buttons: any
+
 
   listaConsulta: Consulta[] = [];
   listaLembrete: Lembrete[] = [];
@@ -108,7 +111,12 @@ export class AgendaComponent {
     this.router.navigate(['/agenda/', item.tipo, i]);
   }
 
-  apagarEvento(id: any){
+  apagarEvento(item: any, id: any){
+    this.http.delete(api + item.tipo + "/", id).subscribe((data) => {
+      this.sucesso = true;
+    }, err => {
+      return alert('Erro ao deletar lembrete')
+    })
     this.lista.splice(id, 1)
   }
 
