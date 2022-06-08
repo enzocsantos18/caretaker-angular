@@ -71,8 +71,11 @@ export class EditAgendaComponent implements OnInit {
   }
 
   confirmar() {
-    this.sucesso = true;
+    this.http.put(api + '/agenda/').subscribe((data) => {
+      this.sucesso = true;
+    }, err => {
+      return alert('Erro ao editar')
+    })
   }
-  
 
 }

@@ -38,6 +38,7 @@ export class AddMedicComponent implements OnInit {
       ds_frequencia_horas: this.ds_frequencia_horas,
       qt_frequencia_diaria: this.qt_frequencia_diaria,
       qt_medicamento: this.qt_medicamento,
+      id: 0,
       id_usuario: this.authService.usuario!.id
     }
    

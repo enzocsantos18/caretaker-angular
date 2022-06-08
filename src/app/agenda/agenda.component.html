@@ -18,7 +18,10 @@
       <p class="infos--nome">{{ item.nome }}</p>
       <p class="infos--hora">{{ item.hora }}</p>
     </div>
-    <div class="alarme--config material-icons" (click)="editarEvento(item, i)">
+    <div
+      class="alarme--config material-icons"
+      (click)="editarEvento(item.tipo, i)"
+    >
       edit
     </div>
     <div class="alarme--config material-icons" (click)="apagarEvento(item, i)">

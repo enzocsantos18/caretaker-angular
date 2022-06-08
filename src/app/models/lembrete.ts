@@ -4,4 +4,5 @@ export interface Lembrete {
   data: string;
   hora: string;
   medicamento: MedicamentoRequest;
+  id: number;
 }

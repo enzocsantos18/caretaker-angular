@@ -6,6 +6,7 @@ export interface MedicamentoRequest {
     qt_frequencia_diaria: number;
     qt_medicamento: number;
     id_usuario: number;
+    id: number;
 }
 
 export interface MedicamentoList {

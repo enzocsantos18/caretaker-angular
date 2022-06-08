@@ -107,17 +107,22 @@ export class AgendaComponent {
     return false
   }
 
-  editarEvento(item: any, i: any) {
-    this.router.navigate(['/agenda/', item.tipo, i]);
+  editarEvento(tipo: string, i: any) {
+    console.log(tipo)
+    this.router.navigate(['/agenda/', tipo, i]);
+
   }
 
-  apagarEvento(item: any, id: any){
-    this.http.delete(api + item.tipo + "/", id).subscribe((data) => {
-      this.sucesso = true;
+  apagarEvento(item: any, i: any){
+    console.log(item)
+    console.log(item.id)
+    console.log(typeof item.id)
+    
+    this.http.delete(api + item.tipo + "/" + item.id).subscribe((data) => {
+      this.lista.splice(i, 1)
     }, err => {
       return alert('Erro ao deletar lembrete')
     })
-    this.lista.splice(id, 1)
   }
 
   getData() {
@@ -161,7 +166,8 @@ export class AgendaComponent {
         data: this.pipe.transform(lembrete.data, 'dd') ?? '',
         hora: lembrete.hora.substring(0, 5),
         nome: lembrete.medicamento.nome,
-        tipo: 'lembrete'
+        tipo: 'lembrete',
+        id: lembrete.medicamento.id
       };
       const data_lembrete = lembrete.data.split('-')
       if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função
@@ -175,7 +181,8 @@ export class AgendaComponent {
         data: this.pipe.transform(consulta.data, 'dd') ?? '',
         hora: consulta.hora.substring(0, 5),
         nome: consulta.nome,
-        tipo: 'consulta'
+        tipo: 'consulta',
+        id: consulta.id
       };
       const data_consulta = consulta.data.split('-')
       if (!this.data_selecionada) {return} // se não há data selecionada, interrompe a função

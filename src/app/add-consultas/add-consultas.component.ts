@@ -40,6 +40,7 @@ export class AddConsultasComponent implements OnInit {
       data: this.data,
       descricao: this.descricao,
       hora: this.hora + ':00',
+      id: 0,
       id_usuario: this.authService.usuario!.id
     }
 
