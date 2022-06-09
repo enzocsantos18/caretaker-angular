@@ -5,7 +5,7 @@
 
 <div *ngIf="!sucesso">
   <div class="label">
-    Nome*: <br />
+    Nome do Médico*: <br />
     <input type="textfield" [(ngModel)]="nome" />
   </div>
   <br />
@@ -34,8 +34,8 @@
   <h2>Sucesso!</h2>
   A consulta foi adicionada com sucesso! :)<br /><br />
   <div class="sucesso-adicionado">
-    <div><b>Nome:</b> {{nome}}</div>
-    <div><b>Data:</b> {{data}}</div>
-    <div><b>Horário:</b> {{hora}}</div>
+    <div><b>Nome:</b> {{ nome }}</div>
+    <div><b>Data:</b> {{ data }}</div>
+    <div><b>Horário:</b> {{ hora }}</div>
   </div>
 </div>
