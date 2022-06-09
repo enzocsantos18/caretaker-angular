@@ -114,15 +114,11 @@ export class AgendaComponent {
   }
 
   apagarEvento(item: any, i: any){
-    console.log(item)
-    console.log(item.id)
-    console.log(typeof item.id)
-    
     this.http.delete(api + item.tipo + "/" + item.id).subscribe((data) => {
-      this.lista.splice(i, 1)
     }, err => {
       return alert('Erro ao deletar lembrete')
     })
+    this.lista.splice(i, 1)
   }
 
   getData() {

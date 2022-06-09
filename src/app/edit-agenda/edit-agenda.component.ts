@@ -23,9 +23,11 @@ export class EditAgendaComponent implements OnInit {
 
   nome = '';
   descricao = '';
-  medicamento: any;
+  medicamentoNome: string = "";
+  medicamentoId: any;
   data: string = '';
   time: string = '';
+  requestUrl = "";
 
   constructor(private http: HttpClient, private authService: AuthService, private route: ActivatedRoute, private info: AgendaInfoService) {
       this.tipo = '';
@@ -52,8 +54,9 @@ export class EditAgendaComponent implements OnInit {
       } else {
         this.data = item.data;
         this.time = item.hora;
-        this.medicamento = item.medicamento.nome;
-        console.log(item.medicamento.nome)
+        this.medicamentoNome = item.medicamento.nome;
+        this.medicamentoId = item.medicamento.id;
+        this.requestUrl = api + `lembrete/` + this.time + "/" + this.data + "/" + this.medicamentoId
       }
 
 
@@ -71,11 +74,19 @@ export class EditAgendaComponent implements OnInit {
   }
 
   confirmar() {
-    this.http.put(api + '/agenda/').subscribe((data) => {
-      this.sucesso = true;
-    }, err => {
-      return alert('Erro ao editar')
-    })
+    if (this.tipo === "Lembrete"){
+      this.http.put(this.requestUrl, {
+        data: this.data,
+        hora: this.time + ":00",
+        id_medicamento: parseInt(this.medicamentoId),
+        id_usuario: this.authService.usuario?.id
+      }).subscribe((data) => {
+      }, err => {
+        return alert('Erro ao deletar lembrete')
+      })
+    }
+
+    this.sucesso = true;
   }
 
 }
