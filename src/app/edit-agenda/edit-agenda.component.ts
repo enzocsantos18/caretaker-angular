@@ -49,14 +49,15 @@ export class EditAgendaComponent implements OnInit {
       if (params.get('tipo') === 'consulta') {
         this.nome = item.nome;
         this.data = item.data;
-        this.time = item.hora;
+        this.time = item.hora.slice(0,5);
         this.descricao = item.descricao;
+        this.requestUrl = api + `consulta/` + item.id
       } else {
         this.data = item.data;
-        this.time = item.hora;
+        this.time = item.hora.slice(0,5);
         this.medicamentoNome = item.medicamento.nome;
         this.medicamentoId = item.medicamento.id;
-        this.requestUrl = api + `lembrete/` + this.time + "/" + this.data + "/" + this.medicamentoId
+        this.requestUrl = api + `lembrete/` + item.hora + "/" + this.data + "/" + this.medicamentoId
       }
 
 
@@ -74,17 +75,29 @@ export class EditAgendaComponent implements OnInit {
   }
 
   confirmar() {
+    console.log(this.requestUrl)
+    let body
     if (this.tipo === "Lembrete"){
-      this.http.put(this.requestUrl, {
+      body = {
         data: this.data,
         hora: this.time + ":00",
         id_medicamento: parseInt(this.medicamentoId),
         id_usuario: this.authService.usuario?.id
-      }).subscribe((data) => {
-      }, err => {
-        return alert('Erro ao deletar lembrete')
-      })
+      }
+    } else {
+      body = {
+        nome: this.nome,
+        data: this.data,
+        descricao: this.descricao,
+        hora: this.time + ':00',
+        id_usuario: this.authService.usuario!.id
+      }
     }
+
+    this.http.put(this.requestUrl, body).subscribe((data) => {
+    }, err => {
+      return alert('Erro ao realizar alterações')
+    })
 
     this.sucesso = true;
   }
